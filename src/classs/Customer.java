@@ -17,13 +17,13 @@ public class Customer {
         this.name = name;
         this.age = age;
         this.total = total;
-        this.isBlacklist = false;
+        this.isBlacklist = true;
     }
 
     void printCustomerInfo() {
-        System.out.println(this.name);
-        System.out.println(this.age);
-        System.out.println(this.total);
-        System.out.println(this.isBlacklist);
+        System.out.println("고객의 이름은? : " + this.name);
+        System.out.println("고객의 나이는? : " + this.age);
+        System.out.println("고객이 총 사용한 금액은? : " + this.total);
+        System.out.println("고객은 블랙리스트 인가요!? : " + this.isBlacklist);
     }
 }
