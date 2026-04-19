@@ -1,10 +1,11 @@
 package polymorphism;
 
-public class AnimalPolyMain3 {
+public class AnimalPolyMain4 {
     public static void main(String[] args) {
-       Animal cat = (Animal) new Cat();
+       Animal animal = new Animal();
 
-       cat.animalMethod();
+       Cat yourAreNowCat = (Cat) animal;
+       yourAreNowCat.grooming();
     }
 
     private static void soundAnimal(Animal animal) {
