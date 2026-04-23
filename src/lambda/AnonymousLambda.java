@@ -1,12 +1,12 @@
 package lambda;
 
-interface MathOperation {
+interface MathAddSub {
     public int opration(int a, int b);
 }
 
 public class AnonymousLambda {
     public static void main(String[] args) {
-        MathOperation addition = new MathOperation() {
+        MathAddSub addition = new MathAddSub() {
             @Override
             public int opration(int a, int b) {
                 return a + b;
@@ -14,7 +14,7 @@ public class AnonymousLambda {
         };
         System.out.println("익명 클래스를 사용한, a + b = " + addition.opration(10, 20));
 
-        MathOperation subtraction = (a, b) -> a - b;
+        MathAddSub subtraction = (a, b) -> a - b;
         System.out.println("람다를 사용한, a - b = " + subtraction.opration(10, 5));
     }
 }

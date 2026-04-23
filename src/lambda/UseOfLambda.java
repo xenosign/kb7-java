@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 
 public class UseOfLambda {
     public static void main(String[] args) {
-        List<String> names = List.of("Kim", "Lee", "Park", "Choi");
+        List<String> names = List.of("Kim", "Lee", "Song", "Choi");
 
         List<String> filtered = new ArrayList<>();
         for (String name : names) {
