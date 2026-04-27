@@ -1,4 +1,4 @@
-package generic.ex2;
+package generic.ex3;
 
 public class StrictGenericBoxMain {
     public static void main(String[] args) {

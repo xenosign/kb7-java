@@ -2,10 +2,12 @@ package exception.check;
 
 import java.util.Random;
 
-public class Client {
+public class Repository {
     public void callCheckException() throws MyCheckException {
-        MyCheckException exception = new MyCheckException("Client callCheckException 에서 발생");
-        throw exception;
+        boolean con = false;
+        // DB 관련 통신 작업
+        if (!con) throw new MyCheckException("DB 관련 작업에서 MyCheckException 에서 발생");
+        // 원하는 작업 수행
     }
     
     public void callRandException() throws MyCheckException2 {

@@ -1,15 +1,13 @@
 package exception.uncheck;
 
-public class Service {
+public class Service3 {
     public static void main(String[] args) {
         Repository repository = new Repository();
 
         try {
             repository.callException();
             repository.callException2();
-        } catch (MyUncheckException e) {
-            e.printStackTrace();
-        } catch (MyCheckException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
