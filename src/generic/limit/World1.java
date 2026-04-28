@@ -2,10 +2,14 @@ package generic.limit;
 
 public class World1 {
     public static void main(String[] args) {
-        IntegerWorld integerWorld1 = new IntegerWorld();
-        integerWorld1.setNumber(10);
+        GenericAptApt<Integer> integerAptApt1 = new GenericAptApt<>();
+        integerAptApt1.setNumber(1118);
+        integerAptApt1.transDouble();
+        System.out.println(integerAptApt1.getNumber());
 
-        IntegerWorld integerWorld2 = new IntegerWorld();
-//        integerWorld2.setNumber(10.3);
+        GenericAptApt<Long> longAptApt = new GenericAptApt<>();
+        longAptApt.setNumber(1118L);
+        longAptApt.transDouble();
+        System.out.println(longAptApt.getNumber());
     }
 }

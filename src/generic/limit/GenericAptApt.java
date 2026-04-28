@@ -1,6 +1,6 @@
 package generic.limit;
 
-public class GenericWorld<T extends Number> {
+public class GenericAptApt<T extends Number> {
     private T number;
 
     public T getNumber() {
@@ -13,5 +13,12 @@ public class GenericWorld<T extends Number> {
 
     public double transDouble() {
         return this.number.doubleValue();
+    }
+
+    @Override
+    public String toString() {
+        return "GenericApartApart{" +
+                "number=" + number +
+                '}';
     }
 }
