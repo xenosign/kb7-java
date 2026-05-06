@@ -20,7 +20,13 @@ public class ForVsStream {
         start = System.currentTimeMillis();
         sum = LongStream.rangeClosed(1, SIZE).sum();
         end = System.currentTimeMillis();
-        System.out.println("for 문 결과 : " + sum);
-        System.out.println("for 문 시간 : " + (end - start));
+        System.out.println("stream 결과 : " + sum);
+        System.out.println("stream 시간 : " + (end - start));
+
+        start = System.currentTimeMillis();
+        sum = LongStream.rangeClosed(1, SIZE).parallel().sum();
+        end = System.currentTimeMillis();
+        System.out.println("parallel 결과 : " + sum);
+        System.out.println("parallel 시간 : " + (end - start));
     }
 }
