@@ -1,31 +1,9 @@
 package stream;
 
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class StreamReal {
-    static class StudentResponse {
-        int id;
-        String name;
-        String filterOption = "none";
-
-        StudentResponse(int id, String name) {
-            this.id = id;
-            this.name = name;
-        }
-
-        public StudentResponse(int id, String name, String filterOption) {
-            this.id = id;
-            this.name = name;
-            this.filterOption = filterOption;
-        }
-
-        @Override
-        public String toString() {
-            return "filterOption is " + filterOption + " / " + id + " : " + name;
-        }
-    }
-
     public static void main(String[] args) {
         List<String> students = Arrays.asList(
                 "강태규", "권유현", "김건우", "김기선", "김민철",
@@ -35,10 +13,69 @@ public class StreamReal {
                 "홍상우", "황지원"
         );
 
+        List<String> onlyLee = new ArrayList<>();
 
-        
+        for (String name : students) {
+            if (name.startsWith("이")) {
+                onlyLee.add(name);
+            }
+        }
+
+        System.out.println(onlyLee);
+
+        List<String> onlyLeeStream = students.stream()
+                .filter(name -> name.startsWith("이"))
+                .collect(Collectors.toList());
+
+        System.out.println(onlyLeeStream);
+
+        List<StudentResponse> responseByFor = new ArrayList<>();
+
+        for (String name : students) {
+            if (name.startsWith("이")) {
+                responseByFor.add(new StudentResponse(students.indexOf(name) + 1, name, "이씨"));
+            }
+        }
+
+        for (StudentResponse student : responseByFor) {
+            System.out.println(student);
+        }
+
+        List<StudentResponse> responseByStream = students.stream()
+                .filter(name -> name.startsWith("이"))
+                .map(name -> new StudentResponse(students.indexOf(name) + 1, name, "이씨"))
+                .collect(Collectors.toList());
+
+        responseByStream.forEach(student -> System.out.println(student));
 
 
-        
+
+        Map<String, List<StudentResponse>> groupedByLastnameByFor = new HashMap<>();
+
+        for (String name : students) {
+            String lastName = name.substring(0, 1);
+
+            if (!groupedByLastnameByFor.containsKey(lastName)) {
+                groupedByLastnameByFor.put(lastName, new ArrayList<>());
+            }
+
+            groupedByLastnameByFor.get(lastName).add(new StudentResponse(students.indexOf(name) + 1, name, name.substring(0, 1) + "씨"));
+        }
+
+        for (Map.Entry<String, List<StudentResponse>> entry : groupedByLastnameByFor.entrySet()) {
+            System.out.println(entry.getKey() + "씨 : " + entry.getValue());
+        }
+
+        Map<String, List<StudentResponse>> groupedByLastnameByStream = students.stream()
+                .collect(Collectors.groupingBy(
+                        name -> name.substring(0, 1),
+                        Collectors.mapping(
+                                name -> new StudentResponse(students.indexOf(name) + 1, name, name.substring(0, 1) + "씨"),
+                                Collectors.toList()
+                        )
+                ));
+
+        groupedByLastnameByStream.forEach((lastName, nameList) ->
+                System.out.println(lastName + "씨 : " + nameList));
     }
 }
